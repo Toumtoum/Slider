@@ -4,6 +4,8 @@
 var pictures = document.getElementsByClassName('mySlides');
 var i;
 var indexPicture = 0;
+var description = document.getElementsByClassName('description');
+var timer = setInterval (function () {slideShow()}, 5000);
 
 
 
@@ -19,30 +21,32 @@ function hidePictures (){
     }
   }
 
-function showPictures () {
+function showPictures (index){
 
-  pictures[indexPicture].style.display = "block" ;
+  pictures[index].style.display = "block" ;
 
   }
 
 function nextPicture (){
 
   hidePictures ();
-  pictures[indexPicture].style.display = "block" ;
+  showPictures (indexPicture);
   indexPicture++;
 
     if (indexPicture >= pictures.length) {
       indexPicture = 0;
+
   }
+    console.log(indexPicture);
 }
 
 function priviousPicture (){
 
   hidePictures ();
-  pictures[indexPicture].style.display = "block" ;
+  showPictures (indexPicture);
   indexPicture--;
 
-    if (indexPicture <= 0) {
+    if (indexPicture < 0) {
       indexPicture = pictures.length - 1 ;
   }
 }
@@ -50,20 +54,29 @@ function priviousPicture (){
 
 function slideShow(){
 
-  showPictures ();
-  setInterval (nextPicture, 3000);
+  console.log(pictures[indexPicture].alt);
+  hidePictures();
+  nextPicture();
 
 }
 
 
+function picturesDescription (){
 
+  description.innerHTML = pictures[indexPicture].alt;
 
+}
+
+function buttonNext (){
+
+  clearInterval(timer);
+  nextPicture();
+  slideShow();
+  alert('test');
+
+}
 
 //-----------------------------SCRIPT-----------------------------------------
 
-
+showPictures (0);
 slideShow();
-console.log(indexPicture);
-
-// document.getElementById('previous').click(priviousPicture());
-// document.getElementById('next').click(nextPicture());

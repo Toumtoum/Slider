@@ -9,8 +9,3 @@ height: auto;
 .container {
   border: 1px red dotted;
 }
-
-.btn{
-    display:table;
-    margin:0 auto;
-}
