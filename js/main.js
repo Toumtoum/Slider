@@ -71,8 +71,15 @@ function buttonNext (){
 
   clearInterval(timer);
   nextPicture();
-  slideShow();
-  alert('test');
+  setTimeout (setInterval (function () {slideShow()}, 5000),1);
+
+}
+
+function buttonPrivious (){
+
+  clearInterval(timer);
+  priviousPicture();
+  setTimeout (setInterval (function () {slideShow()}, 5000),1);
 
 }
 
